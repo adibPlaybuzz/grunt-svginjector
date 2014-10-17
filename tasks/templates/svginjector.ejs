@@ -1,0 +1,10 @@
+(function(){
+	var container = document.getElementById('<%- container %>');
+	if (container) {
+		var el = document.createElement('div');
+		el.innerHTML = <%- content %>;
+		container.appendChild(el);
+	} else {
+		throw new Error("Can't find element: " + container);
+	}
+})();

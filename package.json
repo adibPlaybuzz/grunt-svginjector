@@ -1,0 +1,13 @@
+{
+  "name": "grunt-svginjector",
+  "version": "0.1.0",
+  "description": "Inject SVGs into HTML pages",
+  "main": "Gruntfile.js",
+  "author": "Dan Burzo",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "ejs": "~1.0.0",
+    "path": "~0.4.9"
+  }
+}
