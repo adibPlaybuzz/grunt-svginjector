@@ -2,6 +2,8 @@
 
 > Inject external SVG files into HTML
 
+`grunt-svginjector` is a Grunt plugin that allows you to inline SVGs into your HTML by way of a generated JavaScript file. It works great in conjunction with [grunt-svgstore](https://github.com/FWeinb/grunt-svgstore) for using SVG icons.
+
 ## Getting Started
 
 This plugin requires Grunt `~0.4.5`
@@ -31,3 +33,21 @@ Default: `svginjector`
 
 The ID of the element into which to inject the SVGs.
 
+### Usage
+
+Here's a quick example (see the `example` folder for input/output of task):
+
+```js
+grunt.initConfig({
+	svginjector: {
+		example: {
+			options: {
+				container: 'icons-container'
+			},
+			files: {
+				'example/dist/icons.js': 'example/src/icons.svg'
+			}
+		}
+	}
+});
+```

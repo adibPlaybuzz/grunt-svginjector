@@ -3,8 +3,13 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 		svginjector: {
-			all: {
-				files: []
+			example: {
+				options: {
+					container: 'icons-container'
+				},
+				files: {
+					'example/dist/icons.js': 'example/src/icons.svg'
+				}
 			}
 		}
 	});
