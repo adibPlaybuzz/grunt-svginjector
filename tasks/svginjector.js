@@ -6,13 +6,17 @@ var ejs = require('ejs'),
 module.exports = function(grunt) {
 
 	grunt.registerMultiTask('svginjector', 'Prepare SVG for injecting them into HTML via script file', function() {
-		
-		var options = this.options({
-			container: 'svginjector'
-		})
+		var ejsTemplate = 'svginjector.ejs',
+			options = this.options({
+			    container: 'svginjector'
+		    });
+
+        if(options.byTag) {
+            ejsTemplate = 'svginjectorByTag.ejs';
+        }
 
 		var template = ejs.compile(
-			grunt.file.read(path.join(__dirname, 'templates', 'svginjector.ejs'))
+			grunt.file.read(path.join(__dirname, 'templates', ejsTemplate))
 		);
 
 		this.files.forEach(function(file) {

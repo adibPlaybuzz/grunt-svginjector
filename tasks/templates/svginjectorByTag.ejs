@@ -1,0 +1,11 @@
+(function(){
+    var temp = document.createElement('div'),
+        container = document.getElementsByTagName('<%- container %>')[0];
+
+    if (container) {
+        temp.innerHTML = <%- content %>;
+        container.insertBefore(temp.firstElementChild, container.childNodes[0]);
+    } else {
+        throw new Error("Can't find tag: #" + container);
+    }
+})();

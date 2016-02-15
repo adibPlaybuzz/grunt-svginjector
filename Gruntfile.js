@@ -10,6 +10,15 @@ module.exports = function(grunt) {
 				files: {
 					'example/dist/icons.js': 'example/src/icons.svg'
 				}
+			},
+			exampleByTag: {
+				options: {
+					container: 'body',
+					byTag: true
+				},
+				files: {
+					'example/dist/iconsByTag.js': 'example/src/icons.svg'
+				}
 			}
 		}
 	});
