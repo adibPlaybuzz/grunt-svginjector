@@ -1,8 +1,24 @@
 (function(){
-	var container = document.getElementById('<%- container %>');
+	var container = document.querySelector('<%- container %>'),
+        actions = {
+            replace: function (content) {
+                container.innerHTML = content;
+            },
+            append : function (content) {
+                container.insertAdjacentHTML('beforeend', content)
+            },
+            prepend: function (content) {
+                container.insertAdjacentHTML('afterbegin', content)
+            }
+        };
 	if (container) {
-		container.innerHTML = <%- content %>;
+        if (actions['<%- mode %>']) {
+            actions['<%- mode %>'](<%- content %>);
+        } else {
+            throw new Error("'mode' parameter is not valid");
+        }
+
 	} else {
-		throw new Error("Can't find element: #" + container);
+		throw new Error("Can't find element: " + container);
 	}
 })();

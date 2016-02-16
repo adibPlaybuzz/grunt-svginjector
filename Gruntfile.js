@@ -5,19 +5,28 @@ module.exports = function(grunt) {
 		svginjector: {
 			example: {
 				options: {
-					container: 'icons-container'
+					container: '#icons-container'
 				},
 				files: {
 					'example/dist/icons.js': 'example/src/icons.svg'
 				}
 			},
-			exampleByTag: {
+			examplePrepend: {
 				options: {
 					container: 'body',
-					byTag: true
+					mode: 'prepend'
 				},
 				files: {
-					'example/dist/iconsByTag.js': 'example/src/icons.svg'
+					'example/dist/icons-prepend.js': 'example/src/icons.svg'
+				}
+			},
+			exampleAppend: {
+				options: {
+					container: 'body',
+					mode: 'append'
+				},
+				files: {
+					'example/dist/icons-append.js': 'example/src/icons.svg'
 				}
 			}
 		}
