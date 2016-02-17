@@ -1,9 +1,9 @@
 (function(document){
-	var container = document.querySelector('#icons-container'),
+	var container = document.querySelector('body'),
         action;
     
         action = function (content) {
-            container.innerHTML = content;
+            container.insertAdjacentHTML('beforeend', content)
         };
     
 

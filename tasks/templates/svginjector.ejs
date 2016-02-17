@@ -1,19 +1,23 @@
-(function(){
+(function(document){
 	var container = document.querySelector('<%- container %>'),
-        actions = {
-            replace: function (content) {
-                container.innerHTML = content;
-            },
-            append : function (content) {
-                container.insertAdjacentHTML('beforeend', content)
-            },
-            prepend: function (content) {
-                container.insertAdjacentHTML('afterbegin', content)
-            }
+        action;
+    <% if (mode === 'replace') { %>
+        action = function (content) {
+            container.innerHTML = content;
         };
+    <% } else if (mode === 'append') { %>
+        action = function (content) {
+            container.insertAdjacentHTML('beforeend', content)
+        };
+    <% } else if (mode === 'prepend') { %>
+        action = function (content) {
+            container.insertAdjacentHTML('afterbegin', content)
+        };
+    <% }%>
+
 	if (container) {
-        if (actions['<%- mode %>']) {
-            actions['<%- mode %>'](<%- content %>);
+        if (action) {
+            action(<%- content %>);
         } else {
             throw new Error("'mode' parameter is not valid");
         }
@@ -21,4 +25,4 @@
 	} else {
 		throw new Error("Can't find element: " + container);
 	}
-})();
+})(document);
