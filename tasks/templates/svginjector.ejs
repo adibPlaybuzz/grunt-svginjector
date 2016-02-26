@@ -1,28 +1,19 @@
-(function(document){
-	var container = document.querySelector('<%- container %>'),
-        action;
+(function (document) {
+    var container = document.querySelector('<%- container %>');
+
+    if (container) {
     <% if (mode === 'replace') { %>
-        action = function (content) {
-            container.innerHTML = content;
-        };
+        container.innerHTML = <%- content %>;
+
     <% } else if (mode === 'append') { %>
-        action = function (content) {
-            container.insertAdjacentHTML('beforeend', content)
-        };
+        container.insertAdjacentHTML('beforeend', <%- content %>);
+
     <% } else if (mode === 'prepend') { %>
-        action = function (content) {
-            container.insertAdjacentHTML('afterbegin', content)
-        };
+        container.insertAdjacentHTML('afterbegin', <%- content %>);
     <% }%>
 
-	if (container) {
-        if (action) {
-            action(<%- content %>);
-        } else {
-            throw new Error("'mode' parameter is not valid");
-        }
+    } else {
+        throw new Error('svginjector: Could not find element: ' + container);
+    }
 
-	} else {
-		throw new Error("Can't find element: " + container);
-	}
 })(document);
