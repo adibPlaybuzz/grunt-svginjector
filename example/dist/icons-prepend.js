@@ -7,7 +7,7 @@
     
 
     } else {
-        throw new Error('svginjector: Could not find element: ' + container);
+        throw new Error('svginjector: Could not find element: body');
     }
 
 })(document);
